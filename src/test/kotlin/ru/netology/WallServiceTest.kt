@@ -1,6 +1,7 @@
 package ru.netology
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -54,7 +55,7 @@ class WallServiceTest {
     }
 
     @Test
-    fun update() {
+    fun updateIsTrue() {
         WallService.addPost(
             Post(
                 0,
@@ -123,5 +124,43 @@ class WallServiceTest {
 
         val result = WallService.update(update)
         assertTrue(result)
+    }
+
+    @Test
+    fun updateIsFalse() {
+        WallService.addPost(
+            Post(
+                0,
+                1,
+                1,
+                1,
+                1,
+                "text",
+                1,
+                1,
+                1,
+                Comments(1, false, 1, false, true),
+                "post",
+                true
+            )
+        )
+
+        val update = Post(
+            2,
+            2,
+            2,
+            2,
+            2,
+            "text_UPDATE",
+            1,
+            1,
+            1,
+            Comments(1, false, 1, false, true),
+            "post_UPDATE",
+            true
+        )
+
+        val result = WallService.update(update)
+        assertFalse(result)
     }
 }
