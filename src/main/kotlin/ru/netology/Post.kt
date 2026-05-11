@@ -12,5 +12,6 @@ data class Post(
     val friendsOnly: Int,
     val comments: Comments,
     val postType: String,
-    val isFavorite: Boolean
+    val isFavorite: Boolean,
+    val attachments: Array<Attachment>
 )
